@@ -55,6 +55,11 @@ public class GameEngine implements KeyListener, GameReporter{
 			Enemy e = e_iter.next();
 			e.proceed();
 			
+			if(!e.isAlive()){
+				e_iter.remove();
+				gp.sprites.remove(e);
+			}
+			
 		}
 		
 		gp.updateGameUI(this);
@@ -63,7 +68,15 @@ public class GameEngine implements KeyListener, GameReporter{
 		Rectangle2D.Double er;
 		for(Enemy e : enemies){
 			er = e.getRectangle();
+			if(er.intersects(vr)){
+				die();
+				return;
+			}
 		}
+	}
+	
+	public void die(){
+		timer.stop();
 	}
 	
 	void controlVehicle(KeyEvent e) {
