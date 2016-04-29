@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.Timer;
+import javax.swing.JOptionPane; 
 
 
 public class GameEngine implements KeyListener, GameReporter{
@@ -78,6 +79,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	
 	public void die(){
 		timer.stop();
+		JOptionPane.showMessageDialog (null, "GameOver...", "Space War", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	void controlVehicle(KeyEvent e) {
